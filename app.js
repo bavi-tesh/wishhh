@@ -158,12 +158,9 @@ function pages() {
 scene(`<div class="kicker">chapter 06 · memory book</div>
 <h2>The pages I would<br><em>read again.</em></h2>
 
-scene(`<div class="kicker">chapter 06 · memory book</div>
-<h2>The pages I would<br><em>read again.</em></h2>
-
 <div class="memory-book" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;width:100%;max-width:1100px;box-sizing:border-box;margin:28px auto;align-items:stretch;">
   ${CONFIG.memories.map((memory, index) => `
-    <article class="memory-page" style="box-sizing:border-box;width:100%;min-width:0;height:100%;padding:clamp(16px,4vw,26px);overflow-wrap:anywhere;">
+    <article class="memory-page" style="box-sizing:border-box;width:100%;min-width:0;padding:clamp(16px,4vw,26px);overflow-wrap:anywhere;">
       <small style="display:block;line-height:1.6;">${esc(memory.date)}</small>
       <h3 style="font-size:clamp(17px,2.5vw,22px);line-height:1.4;margin:12px 0;">${esc(memory.title)}</h3>
       <p style="font-size:clamp(14px,2vw,16px);line-height:1.75;">${esc(memory.body)}</p>
@@ -173,8 +170,6 @@ scene(`<div class="kicker">chapter 06 · memory book</div>
 </div>
 
 ${button("A few surprises", "next")}`, "memory-page-wrap"),
-
-${button("A few surprises", "next")}`, "memory-page-wrap"),    
 scene(`<div class="kicker">chapter 07 · pick one</div><h2>Three tiny<br><em>secrets for you.</em></h2><div class="surprise-grid">${CONFIG.surprises.map((item, index) => `<button class="surprise-card ${state.surprise === index ? "revealed" : ""}" data-surprise="${index}"><span>${item.icon}</span><strong>${state.surprise === index ? esc(item.message) : item.label}</strong><small>${state.surprise === index ? "for you, always" : "open me"}</small></button>`).join("")}</div>${state.surprise !== null ? button("One last chapter", "next") : `<p class="hint">choose the one that calls to you</p>`}`, "surprises-page"),
     scene(`<div class="kicker">chapter 08 · this is why</div><h2>Things I hope you<br><em>never forget.</em></h2><div class="appreciation">${CONFIG.appreciation.map((item, index) => `<p style="--delay:${index * 100}ms"><span>♡</span>${esc(item)}</p>`).join("")}</div><p class="wish">${esc(CONFIG.wish)}</p>${button("Make a wish", "next")}`, "appreciation-page"),
     scene(`<div class="kicker">chapter 09 · make it count</div><h2>One breath.<br><em>One wish.</em></h2><div class="cake"><div class="flames">${[0, 1, 2].map((n) => `<button class="flame ${state.candleCount > n ? "out" : ""}" data-candle="${n}" aria-label="Blow out candle ${n + 1}">✦</button>`).join("")}</div><div class="candles">|||</div><div class="cake-top"></div><div class="cake-body"></div></div><p class="hint">tap each flame to blow it out</p>${state.candleCount >= 3 ? `<p class="success-note">wish sent into the universe ✦</p>${button("The final surprise", "next")}` : ""}`, "cake-page"),
